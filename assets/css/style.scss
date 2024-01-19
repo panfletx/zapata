@@ -1,0 +1,45 @@
+---
+sitemap: false
+---
+
+/* open-sans-300 - latin */
+@font-face {
+  font-family: "Open Sans Light";
+  font-style: normal;
+  font-weight: 300;
+}
+
+/* open-sans-regular - latin */
+@font-face {
+  font-family: "Open Sans Regular";
+  font-style: normal;
+  font-weight: 400
+}
+
+/* text */
+
+$body-font: "Open Sans Regular", "Verdana", "sans-serif";
+$heading-font: "Open Sans Light", "Verdana", "sans-serif";
+
+/* Colors */
+
+$dark-background: #440027;
+$light-text: #d49a6a;
+$light-link: #ffd1aa;
+$light-link-hover: #fff;
+$medium-background: #801515;
+$light-background: #f7e4ef;
+$dark-text: #444444;
+$code: #3c1553;
+$muted-text: #777777;
+
+/* Image Heights */
+
+$parallax-height: 350px;
+
+/* Viewer proportions */
+
+$viewer-height: 100%;
+$max-width: 100%;
+
+@import "facets";

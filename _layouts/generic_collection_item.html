@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+{% assign links = site[page.collection] | sort: 'order' | map: 'url' %} {% for
+link in links %} {% if link == page.url %} {% if forloop.first %} {% assign
+prevlink = links | last %} {% assign nextlink = links[forloop.index] %} {% elsif
+forloop.last %} {% assign prevlink = prev %} {% assign nextlink = links | first
+%} {% else %} {% assign prevlink = prev %} {% assign nextlink =
+links[forloop.index] %} {% endif %} {% endif %} {% assign prev = link %} {%
+endfor %}
+
+<div class="row">
+  <div class="pagination mx-auto">
+    <div class="pagination-link" id="prevlink">
+      <a href="{{ prevlink | absolute_url }}">&#9668;</a>
+    </div>
+    <div class="pagination-link" id="nextlink">
+      <a href="{{ nextlink | absolute_url }}">&#9658;</a>
+    </div>
+  </div>
+</div>
+
+<!-- The block below controls the image viewer -->
+
+<div
+  class="pswp-gallery pswp-gallery--single-column"
+  id="gallery--getting-started"
+>
+  {% for image in site.static_files %} {% if image.path contains
+  'img/derivatives/simple' and image.path contains page.pid %} {% if image.path
+  contains 'fullwidth'%}
+  <a
+    href="{{site.baseurl}}/{{ image.path }}"
+    data-pswp-width="600"
+    data-pswp-height="800"
+    target="_blank"
+  >
+    {% endif %} {% if image.path contains 'thumbnail' %}
+    <img src="{{site.baseurl}}/{{ image.path }}" alt="" />
+  </a>
+  {% endif %} {% endif %} {% endfor %}
+</div>
+<div class="mt-5 row card thumbnail-card">
+  <div class="card-body item-metadata">
+    <!-- The block below controls the item metadata table -->
+
+    <h1 alt="{{ page.label }}" class="item-label">{{ page.label }}</h1>
+    <div class="row">
+      {% if layout.meta.size %} {% assign metadata = layout.meta %} {% elsif
+      page.meta.size %} {% assign metadata = page.meta %} {% endif %} {% if
+      metadata.size %} {% include item_metadata.html meta=metadata %} {% endif
+      %}
+    </div>
+  </div>
+</div>
