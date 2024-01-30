@@ -1,5 +1,5 @@
-title: Online Zapata Library
-subtitle: Los libros de Zapata
+title: Luis Zapata
+subtitle: Catálogo bibliográfico y archivo digital
 author:
   name: Wax user
   email: your-email@domain.com
@@ -72,3 +72,5 @@ menu:
     link: "/learning/"
   - label: "About"
     link: "/about/"
+  - label: "Catalogue"
+    link: "/catalogue/"

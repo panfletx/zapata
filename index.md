@@ -7,19 +7,14 @@
 #
 layout: home
 ---
+<img src="assets/images/coverphoto.jpg" class="img-responsive" width="100%"/>
+<div>
+<h1>Introducción</h1>
+<div>
+<p>Este repositorio digital presentará una ventana al mundo personal y literario de Luis Zapata (1951-2020), reconocido nacional e internacionalmente como uno de los escritores de literatura gay mexicana más importantes. El proyecto divulgará un catálogo de su biblioteca junto a más de 500 documentos digitalizados de su archivo, los cuales incluyen correspondencia personal y profesional desde los 60s hasta el 2020, algunos textos inéditos y publicaciones en revistas culturales. Los materiales publicados contribuyen a ampliar el conocimiento de la vida personal e interpersonal del escritor, así como de sus afinidades culturales y literarias. El proyecto busca ser una herramienta de apoyo a la investigación biográfica, bibliográfica y literaria de Zapata, en particular, y de la literatura LGBT mexicana, en general.</p>
+<p>La digitalización fue posible gracias al apoyo financiero de una beca FLAGS del programa de estudios LGBT de Yale. Estuvo a cargo de Alan Mendoza Sosa, doctorando con interés en literatura LGBT hispanoamericana, y fue supervisado por el profesor Alexander Gil Fuentes, investigador de humanidades digitales en el Departamento de español y portugués en Yale y director asociado del Foro Creativo, iniciativa que conecta la creación literaria con el trabajo de investigación.</p>
+<p>Se proyecta lanzar el archivo y catálogo el 27 de abril del 2024, fecha que marcaría el cumpleaños número 73 de Luis Zapata.</p>
+</div>
+</div>
 
-### Facet <span style="color:#440027;font-size:small"><em>noun</em></span>
 
-**fac·et** | \ ˈfa-sət
-
-1. any of the definable aspects that make up a subject or an object. Ex. _Each facet of the problem requires careful attention_.
-2. a small plane surface.
-3. the external corneal surface of an ommatidium. (_[Merriam-Webster](https://www.merriam-webster.com/dictionary/facet)_)
-
----
-
-Welcome! _Facets_ is the second Jekyll theme for [Wax sites](https://minicomp.github.io/wax/). _Facets_ allows users to browse through a collection using facets, or filters. When we are browsing through a collection of cultural artifacts, we often want to reduce the number of objects in front of us to a small collection that fits a very specific criteria. Faceted browsing is a form of browsing that allows you to do just that using filters you select. In Facets this can be achieved using drop-down menus where you can select the categories you want to browse by.
-
-This template is open source. To use it for your small collection and exhibit simply replace our content with yours. To learn more visit our ["About"]({{site.baseurl}}/about/) page and our ["How to"]({{site.baseurl}}/learning/) page. If you know what you're doing, and you're ready to jump right in, then go ahead and...
-
-<div class="text-center"><a class="action-button btn" href="https://github.com/minicomp/wax-facets/" target="_blank" role="button">get me on Github</a></div>
