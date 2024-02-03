@@ -1,0 +1,24 @@
+# _data/images.yml
+
+- url: 'assets/images/collage/a1.png'
+  alt: 'Description for Image 1'
+
+- url: 'assets/images/collage/a2.png'
+  alt: 'Description for Image 2'
+
+- url: 'assets/images/collage/a3.jpg'
+  alt: 'Description for Image 1'
+
+- url: 'assets/images/collage/a4.jpg'
+  alt: 'Description for Image 2'
+
+- url: 'assets/images/collage/a5.png'
+  alt: 'Description for Image 2'
+
+- url: 'assets/images/collage/a6.png'
+  alt: 'Description for Image 2'
+
+- url: 'assets/images/collage/a7.png'
+  alt: 'Description for Image 2'
+
+# Add more image data as needed
