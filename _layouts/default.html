@@ -7,6 +7,15 @@
     {%- include header.html -%}
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
+        {% if page.mosaic %}
+        <div class="mosaic" id="mosaic">
+          <img
+            class="photo horizontal"
+            src="{{ 'assets/images/coverphoto.jpg' | relative_url }}"
+            alt="Static Image"
+          />
+        </div>
+        {% endif %}
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
         {{ content }}

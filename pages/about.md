@@ -4,32 +4,6 @@ title: About
 permalink: /about/
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    .collage {
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .photo {
-      position: absolute;
-      object-fit: cover;
-    }
-  </style>
-</head>
-<body>
   <div class="collage" id="collage"></div>
 
   <script>
@@ -79,5 +53,3 @@ permalink: /about/
 
     changePhotosRandomly();
   </script>
-</body>
-</html>
