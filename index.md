@@ -8,35 +8,65 @@
 layout: home
 mosaic: true
 ---
-
 <style>
-  body {
-    margin: 0;
-  }
 
-  .mosaic {
+.mosaic {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; /* Three columns */
-    grid-template-rows: 1fr 1fr; /* Two rows */
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
     gap: 10px;
-    height: 100%;
+    height: 100vh;
     padding: 10px;
   }
-
-  .photo {
+  
+.photoSt {
+    position: relative;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    }
+  
+.photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px; /* Create 3D flip effect */
+    transform-style: preserve-3d;
+    object-fit: cover;
   }
-
-  .horizontal {
-    grid-column: span 2; /* Span three columns for the horizontal rectangle */
+  
+.photo.flipped .img-inner {
+    transform: rotateY(180deg);
+  }
+  
+.photo-front,
+.photo-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.4s ease-in-out; /* Set smooth transition */
+  }
+  
+.photo-front {
+    background-color: #ccc;
+    color: black;
+  }
+  
+.photo-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+.horizontal {
+    grid-column: span 2; 
     grid-row: span 2; 
-  }
+}
 </style>
 
+<body>
 <div>
-
 <h1>Introducción</h1>
 <div>
 <p>Este repositorio digital presentará una ventana al mundo personal y literario de Luis Zapata (1951-2020), reconocido nacional e internacionalmente como uno de los escritores de literatura gay mexicana más importantes. El proyecto divulgará un catálogo de su biblioteca junto a más de 500 documentos digitalizados de su archivo, los cuales incluyen correspondencia personal y profesional desde los 60s hasta el 2020, algunos textos inéditos y publicaciones en revistas culturales. Los materiales publicados contribuyen a ampliar el conocimiento de la vida personal e interpersonal del escritor, así como de sus afinidades culturales y literarias. El proyecto busca ser una herramienta de apoyo a la investigación biográfica, bibliográfica y literaria de Zapata, en particular, y de la literatura LGBT mexicana, en general.</p>
@@ -44,44 +74,74 @@ mosaic: true
 <p>Se proyecta lanzar el archivo y catálogo el 27 de abril del 2024, fecha que marcaría el cumpleaños número 73 de Luis Zapata.</p>
 </div>
 </div>
+</body>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mosaic = document.getElementById('mosaic');
-    const images = [
-      {% for image in site.data.images %}
+const mosaic = document.getElementById('mosaic');
+  const images = [
+  {% for image in site.data.images %}
         "{{ image.url | relative_url }}",
       {% endfor %}
-    ];
+  ];
 
-    let currentIndex = 5; // Start with the fourth image
+   function preloadImages(urls) {
+    return Promise.all(urls.map(url => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = url;
+      });
+    }));
+  }
 
-    // Preload and show all images immediately
-    for (let i = 1; i < 5; i++) {
-      const img = document.createElement('img');
-      img.className = 'photo';
-      img.src = images[i];
-      img.alt = 'Image ' + (i + 1);
-      mosaic.appendChild(img);
-    }
+// Function to create a photo element with front and back images
+  function createPhoto(src) {
+  const photo = document.createElement('div');
+  photo.classList.add('photo');
 
-    function showNextImage() {
-      const img = document.createElement('img');
-      img.className = 'photo';
-      img.src = images[currentIndex];
-      img.alt = 'Image ' + (currentIndex + 1);
+  const frontImage = document.createElement('img');
+  frontImage.classList.add('photo-front', 'img-inner');
+  frontImage.src = src;
+  frontImage.alt = 'Image';
 
-      mosaic.appendChild(img);
+  const backImage = document.createElement('img');
+  backImage.classList.add('photo-back', 'img-inner');
+  // Set the back image source if needed
 
-      currentIndex = (currentIndex + 1) % images.length;
+  photo.appendChild(frontImage);
+  photo.appendChild(backImage);
 
-      // Remove the oldest image if there are more than 4 (adjust for the grid structure)
-      if (mosaic.children.length > 4) {
-        mosaic.removeChild(mosaic.children[1]); // Remove the second image onwards
+  return photo;
+}
+
+// Function to handle image flipping and timing
+  function flipImage(photo) {
+  photo.classList.toggle('flipped');
+
+  // Choose a random delay between 1 and 5 seconds
+  const delay = Math.floor(Math.random() * 4) + 1;
+  setTimeout(() => {
+    flipImage(photo); // Recursively flip after random delay
+  }, delay * 2000);
+}
+
+const usedIndices = [];
+// Initialize the grid with random images
+function initGrid() {
+   preloadImages(images).then(() => {
+  const mosaic = document.getElementById('mosaic');
+  for (let i = 0; i < 4; i++) {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * images.length);
+    } while (usedIndices.includes(randomIndex));
+    usedIndices.push(randomIndex); // Mark the index as used
+    const photo = createPhoto(images[randomIndex]);
+    mosaic.appendChild(photo);
+    flipImage(photo);
       }
-    }
-
-    // Change the image every 5 seconds (adjust the time interval as needed)
-    setInterval(showNextImage,3000);
-  });
+    });
+  } 
+initGrid();
 </script>

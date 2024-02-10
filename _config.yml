@@ -68,8 +68,6 @@ menu:
     link: "/collection/"
   - label: "Search"
     link: "/search/"
-  - label: "Collage"
-    link: "/collage/"
   - label: "About"
     link: "/about/"
   - label: "Catalogue"
