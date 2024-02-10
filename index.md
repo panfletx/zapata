@@ -12,7 +12,7 @@ mosaic: true
 
 .mosaic {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-columns: 3.5fr 1fr; 
     grid-template-rows: 1fr 1fr;
     gap: 10px;
     height: 100vh;
@@ -60,7 +60,7 @@ mosaic: true
   }
   
 .horizontal {
-    grid-column: span 2; 
+    grid-column: span 1; 
     grid-row: span 2; 
 }
 </style>
@@ -78,25 +78,24 @@ mosaic: true
 
 <script>
 const mosaic = document.getElementById('mosaic');
-  const images = [
+const images = [
   {% for image in site.data.images %}
-        "{{ image.url | relative_url }}",
-      {% endfor %}
-  ];
+    "{{ image.url | relative_url }}",
+  {% endfor %}
+];
 
-   function preloadImages(urls) {
-    return Promise.all(urls.map(url => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = url;
-      });
-    }));
-  }
+// Preload images to prevent flickering
+function preloadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = url;
+  });
+}
 
 // Function to create a photo element with front and back images
-  function createPhoto(src) {
+function createPhoto(src) {
   const photo = document.createElement('div');
   photo.classList.add('photo');
 
@@ -116,32 +115,26 @@ const mosaic = document.getElementById('mosaic');
 }
 
 // Function to handle image flipping and timing
-  function flipImage(photo) {
+function flipImage(photo) {
   photo.classList.toggle('flipped');
 
   // Choose a random delay between 1 and 5 seconds
   const delay = Math.floor(Math.random() * 4) + 1;
   setTimeout(() => {
     flipImage(photo); // Recursively flip after random delay
-  }, delay * 2000);
+  }, delay * 1000);
 }
 
-const usedIndices = [];
 // Initialize the grid with random images
 function initGrid() {
-   preloadImages(images).then(() => {
-  const mosaic = document.getElementById('mosaic');
-  for (let i = 0; i < 4; i++) {
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * images.length);
-    } while (usedIndices.includes(randomIndex));
-    usedIndices.push(randomIndex); // Mark the index as used
+  for (let i = 0; i < 16; i++) {
+    const randomIndex = Math.floor(Math.random() * images.length);
     const photo = createPhoto(images[randomIndex]);
     mosaic.appendChild(photo);
-    flipImage(photo);
-      }
-    });
-  } 
+    flipImage(photo); // Start flipping immediately
+  }
+}
+
 initGrid();
 </script>
+
