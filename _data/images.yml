@@ -1,15 +1,15 @@
 # _data/images.yml
 
 - url: 'assets/images/collage/a1.png'
-  alt: 'Description for Image 1'
+  alt: 'Cover La ciudad de la noche'
 
 - url: 'assets/images/collage/a2.png'
-  alt: 'Description for Image 2'
+  alt: 'Cover el diario de José Toledo'
 
-- url: 'assets/images/collage/a3.jpg'
+- url: 'assets/images/collage/a3.png'
   alt: 'Description for Image 3'
 
-- url: 'assets/images/collage/a4.jpg'
+- url: 'assets/images/collage/a4.png'
   alt: 'Description for Image 4'
 
 - url: 'assets/images/collage/a5.png'
@@ -20,5 +20,8 @@
 
 - url: 'assets/images/collage/a7.png'
   alt: 'Description for Image 7'
+
+- url: 'assets/images/collage/a8.png'
+  alt: 'Description for Image 8'
 
 # Add more image data as needed
