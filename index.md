@@ -9,61 +9,33 @@ layout: home
 mosaic: true
 ---
 <style>
-
 .mosaic {
     display: grid;
-    grid-template-columns: 3.5fr 1fr; 
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 10px;
-    height: 100vh;
     padding: 10px;
-  }
-  
-.photoSt {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    }
-  
+}
+
 .photo {
     position: relative;
     width: 100%;
     height: 100%;
-    perspective: 1000px; /* Create 3D flip effect */
-    transform-style: preserve-3d;
-    object-fit: cover;
-  }
-  
-.photo.flipped .img-inner {
-    transform: rotateY(180deg);
-  }
-  
-.photo-front,
-.photo-back {
-    position: absolute;
+}
+
+.photo img {
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
-    transition: transform 0.4s ease-in-out; /* Set smooth transition */
-  }
-  
-.photo-front {
-    background-color: #ccc;
-    color: black;
-  }
-  
-.photo-back {
-    background-color: #2980b9;
-    color: white;
-    transform: rotateY(180deg);
-  }
-  
-.horizontal {
-    grid-column: span 1; 
-    grid-row: span 2; 
+    object-fit: cover;
 }
+
+.horizontal {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
 </style>
+
 
 <body>
 <div>
@@ -84,57 +56,22 @@ const images = [
   {% endfor %}
 ];
 
-// Preload images to prevent flickering
-function preloadImage(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = resolve;
-    img.onerror = reject;
-    img.src = url;
-  });
+// Function to create an image element
+function createImage(src) {
+  const image = document.createElement('img');
+  image.classList.add('photo');
+  image.src = src;
+  image.alt = 'Image';
+  return image;
 }
 
-// Function to create a photo element with front and back images
-function createPhoto(src) {
-  const photo = document.createElement('div');
-  photo.classList.add('photo');
-
-  const frontImage = document.createElement('img');
-  frontImage.classList.add('photo-front', 'img-inner');
-  frontImage.src = src;
-  frontImage.alt = 'Image';
-
-  const backImage = document.createElement('img');
-  backImage.classList.add('photo-back', 'img-inner');
-  // Set the back image source if needed
-
-  photo.appendChild(frontImage);
-  photo.appendChild(backImage);
-
-  return photo;
-}
-
-// Function to handle image flipping and timing
-function flipImage(photo) {
-  photo.classList.toggle('flipped');
-
-  // Choose a random delay between 1 and 5 seconds
-  const delay = Math.floor(Math.random() * 4) + 1;
-  setTimeout(() => {
-    flipImage(photo); // Recursively flip after random delay
-  }, delay * 1000);
-}
-
-// Initialize the grid with random images
+// Initialize the grid with static images
 function initGrid() {
-  for (let i = 0; i < 16; i++) {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    const photo = createPhoto(images[randomIndex]);
-    mosaic.appendChild(photo);
-    flipImage(photo); // Start flipping immediately
+  for (let i = 0; i < 6; i++) {
+    const image = createImage(images[i]);
+    mosaic.appendChild(image);
   }
 }
 
 initGrid();
 </script>
-
