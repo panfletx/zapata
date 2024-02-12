@@ -13,8 +13,8 @@ mosaic: true
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
-    padding: 10px;
+    gap: 5px;
+    padding: 0px;
 }
 
 .photo {
@@ -26,12 +26,13 @@ mosaic: true
 .photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 
 .horizontal {
-    grid-column: span 2;
-    grid-row: span 1;
+    grid-column: span 3;
+    grid-row: span 2;
+    object-fit: cover;
+    object-position: 100% 0;
 }
 
 </style>
@@ -67,7 +68,7 @@ function createImage(src) {
 
 // Initialize the grid with static images
 function initGrid() {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 2; i++) {
     const image = createImage(images[i]);
     mosaic.appendChild(image);
   }
