@@ -35,6 +35,33 @@ mosaic: true
     object-position: 100% 0;
 }
 
+/* Bootstrap responsive classes */
+@media (min-width: 576px) {
+    .mosaic {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .mosaic {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .mosaic {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .mosaic {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
 </style>
 
 
