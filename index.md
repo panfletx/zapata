@@ -8,10 +8,11 @@
 layout: home
 mosaic: true
 ---
+
 <style>
 .mosaic {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 5px;
     padding: 0px;
@@ -50,20 +51,19 @@ mosaic: true
 
 @media (min-width: 992px) {
     .mosaic {
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 1200px) {
     .mosaic {
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
     }
 }
 
 </style>
-
 
 <body>
 <div>

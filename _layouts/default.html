@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   {%- include head.html -%}
   
   <article class="post">
@@ -8,13 +8,19 @@
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
         {% if page.mosaic %}
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+        <img
+        class="photo horizontal mb-1 img-fluid"
+        src="{{ 'assets/images/coverphoto.jpg' | relative_url }}"
+        alt="Static Image"
+      /></div>
+      <div class="col-lg-4 mx-auto">
         <div class="mosaic" id="mosaic">
-          <img
-            class="photo horizontal"
-            src="{{ 'assets/images/coverphoto.jpg' | relative_url }}"
-            alt="Static Image"
-          />
+
         </div>
+        </div>
+      </div>
         {% endif %}
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
