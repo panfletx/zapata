@@ -8,11 +8,11 @@
 layout: home
 mosaic: true
 ---
+
 <style>
 .mosaic {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 5px;
     padding: 0px;
 }
@@ -36,10 +36,28 @@ mosaic: true
 }
 
 /* Bootstrap responsive classes */
+
+@media (max-width: 575px) {
+
+    .mosaic {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .horizontal {
+        grid-column: span 2;
+        grid-row: span 4;
+}
+}
+
 @media (min-width: 576px) {
     .mosaic {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
+
+    .horizontal {
+    grid-column: span 8;
+    grid-row: span 6;
+}
 }
 
 @media (min-width: 768px) {
@@ -63,7 +81,6 @@ mosaic: true
 }
 
 </style>
-
 
 <body>
 <div>
