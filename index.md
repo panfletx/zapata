@@ -49,7 +49,13 @@ mosaic: true
     .horizontal {
         grid-columns: span 6;
         grid-row: span 3;
-}
+    
+    }
+
+    .subtitle {
+        display: none;
+
+    }
 }
 
 </style>
@@ -83,10 +89,10 @@ function createImage(src) {
 }
 
 // Initialize the grid with static images
-        function initGrid() {
-            for (let i = 0; i < 6; i++) {
-            const image = createImage(images[i]);
-            mosaic.appendChild(image);
+function initGrid() {
+    for (let i = 0; i < 6; i++) {
+    const image = createImage(images[i]);
+    mosaic.appendChild(image);
   }
 }
 initGrid();
