@@ -12,8 +12,9 @@ mosaic: true
 <style>
 .mosaic {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 3px;
     padding: 0px;
 }
 
@@ -30,9 +31,9 @@ mosaic: true
 
 .horizontal {
     grid-column: span 6;
-    grid-row: span 4;
+    grid-row: span 3;
     object-fit: cover;
-    object-position: 100% 0;
+    object-position: 100%;
 }
 
 /* Bootstrap responsive classes */
@@ -40,44 +41,15 @@ mosaic: true
 @media (max-width: 575px) {
 
     .mosaic {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 2px;
     }
 
     .horizontal {
-        grid-column: span 2;
-        grid-row: span 4;
+        grid-columns: span 6;
+        grid-row: span 3;
 }
-}
-
-@media (min-width: 576px) {
-    .mosaic {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .horizontal {
-    grid-column: span 8;
-    grid-row: span 6;
-}
-}
-
-@media (min-width: 768px) {
-    .mosaic {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .mosaic {
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-    }
-}
-
-@media (min-width: 1200px) {
-    .mosaic {
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-    }
 }
 
 </style>
@@ -111,12 +83,11 @@ function createImage(src) {
 }
 
 // Initialize the grid with static images
-function initGrid() {
-  for (let i = 0; i < 8; i++) {
-    const image = createImage(images[i]);
-    mosaic.appendChild(image);
+        function initGrid() {
+            for (let i = 0; i < 6; i++) {
+            const image = createImage(images[i]);
+            mosaic.appendChild(image);
   }
 }
-
 initGrid();
 </script>
