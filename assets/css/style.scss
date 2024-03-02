@@ -44,52 +44,50 @@ $max-width: 100%;
 
 @import "facets";
 
-// Frotpage mosaic properties
-
 .mosaic {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 3px;
-    padding: 0px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  padding: 0px;
 }
 
 .photo {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .photo img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .horizontal {
-    grid-column: span 6;
-    grid-row: span 3;
-    object-fit: cover;
-    object-position: 100%;
+  grid-column: span 6;
+  grid-row: span 3;
+  object-fit: cover;
+  object-position: 100% 0;
 }
 
 /* Bootstrap responsive classes */
 
 @media (max-width: 575px) {
 
-    .mosaic {
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        gap: 2px;
-    }
+  .mosaic {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 2px;
+  }
 
-    .horizontal {
-        grid-columns: span 6;
-        grid-row: span 3;
-    
-    }
+  .horizontal {
+      grid-columns: span 6;
+      grid-row: span 3;
+  
+  }
 
-    .subtitle {
-        display: none;
+  .subtitle {
+      display: none;
 
-    }
+  }
 }
