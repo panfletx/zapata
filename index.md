@@ -8,58 +8,6 @@
 layout: home
 mosaic: true
 ---
-
-<style>
-.mosaic {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 3px;
-    padding: 0px;
-}
-
-.photo {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.photo img {
-    width: 100%;
-    height: 100%;
-}
-
-.horizontal {
-    grid-column: span 6;
-    grid-row: span 3;
-    object-fit: cover;
-    object-position: 100%;
-}
-
-/* Bootstrap responsive classes */
-
-@media (max-width: 575px) {
-
-    .mosaic {
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        gap: 2px;
-    }
-
-    .horizontal {
-        grid-columns: span 6;
-        grid-row: span 3;
-    
-    }
-
-    .subtitle {
-        display: none;
-
-    }
-}
-
-</style>
-
 <body>
 <div>
 <h1>Introducción</h1>
@@ -70,30 +18,3 @@ mosaic: true
 </div>
 </div>
 </body>
-
-<script>
-const mosaic = document.getElementById('mosaic');
-const images = [
-  {% for image in site.data.images %}
-    "{{ image.url | relative_url }}",
-  {% endfor %}
-];
-
-// Function to create an image element
-function createImage(src) {
-  const image = document.createElement('img');
-  image.classList.add('photo');
-  image.src = src;
-  image.alt = 'Image';
-  return image;
-}
-
-// Initialize the grid with static images
-function initGrid() {
-    for (let i = 0; i < 6; i++) {
-    const image = createImage(images[i]);
-    mosaic.appendChild(image);
-  }
-}
-initGrid();
-</script>

@@ -116,3 +116,5 @@ function refreshGallery() {
   }
   listOfElements.show("slow");
 }
+
+
